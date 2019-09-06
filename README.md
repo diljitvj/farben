@@ -1,5 +1,7 @@
 # Farben
 
+[![Code Style](https://img.shields.io/badge/Code%20Style-Prettier-%23ff69b4.svg)](https://prettier.io/) [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://storybook.js.org/)
+
 Inspired by MS Paint<br>
 Made with React
 
