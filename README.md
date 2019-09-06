@@ -1,6 +1,6 @@
 # Farben
 
-Inspired by MS Paint
+Inspired by MS Paint<br>
 Made with React
 
 ## Available Scripts
