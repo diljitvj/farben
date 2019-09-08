@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './style.module.css';
 
 const ColorTile = ({ color, size, onClick }) => {
-  console.log(size);
   return (
     <div
-      onClick={onClick}
+      onClick={() => onClick(color)}
       className={styles.tile}
       style={{
         width: `${size}px`,
