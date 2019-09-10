@@ -1,0 +1,44 @@
+.controlWrapper {
+  position: relative;
+}
+
+.controlIconWrapper {
+  display: inline-block;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  line-height: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.controlIcon {
+  width: 30px !important;
+  height: 30px !important;
+  padding: 5px;
+}
+.controlIconWrapper.selected {
+  border-bottom: 1px solid red;
+}
+.controlIconWrapper.firstChild,
+.optionWrapper.firstChild {
+  border-left: 1px solid #cccccc;
+}
+
+.optionWrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  padding: 5px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.activeControl {
+  width: 69px;
+  height: 69px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+}
