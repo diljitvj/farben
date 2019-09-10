@@ -70,15 +70,57 @@ const CONTROLS = [
     options: [
       {
         type: 'eraseRadius',
-        value: 1
+        value: 1,
+        Icon: (
+          <span
+            style={{
+              position: 'absolute',
+              top: 'calc(50% - 5px)',
+              left: 'calc(50% - 5px)',
+              width: '10px',
+              height: '10px',
+              border: '1px solid black',
+              borderRadius: '5px',
+              display: 'inline-block'
+            }}
+          ></span>
+        )
       },
       {
         type: 'eraseRadius',
-        value: 2
+        value: 2,
+        Icon: (
+          <span
+            style={{
+              position: 'absolute',
+              top: 'calc(50% - 7.5px)',
+              left: 'calc(50% - 7.5px)',
+              width: '15px',
+              height: '15px',
+              border: '1px solid black',
+              borderRadius: '8px',
+              display: 'inline-block'
+            }}
+          ></span>
+        )
       },
       {
         type: 'eraseRadius',
-        value: 3
+        value: 3,
+        Icon: (
+          <span
+            style={{
+              position: 'absolute',
+              top: 'calc(50% - 10px)',
+              left: 'calc(50% - 10px)',
+              width: '20px',
+              height: '20px',
+              border: '1px solid black',
+              borderRadius: '10px',
+              display: 'inline-block'
+            }}
+          ></span>
+        )
       }
     ]
   }
@@ -90,6 +132,17 @@ class ControlPanel extends Component {
     selectedMode: null
   };
 
+  handleControlChange = (optionType, optionValue) => {
+    const { activeControl = {}, onChange } = this.props;
+
+    const { mode } = activeControl;
+
+    const { selectedMode } = this.state;
+
+    const newMode = selectedMode || mode;
+
+    onChange({ mode: newMode, option: { [optionType]: optionValue } });
+  };
   handleModeClick = selectedMode => {
     this.setState({
       selectedMode,
@@ -122,6 +175,14 @@ class ControlPanel extends Component {
     return option.Icon;
   };
 
+  getModeUiLabel = modeValue => {
+    const mode = CONTROLS.find(({ mode }) => mode === modeValue);
+
+    if (!mode || !mode.options) return '';
+
+    return mode.uiLabel;
+  };
+
   render() {
     const { activeControl = {} } = this.props;
     const { mode, option } = activeControl;
@@ -133,6 +194,9 @@ class ControlPanel extends Component {
     return (
       <div className={styles.controlWrapper}>
         <div className={styles.activeControl}>
+          <span className={styles.selectedMode}>
+            {this.getModeUiLabel(mode)}
+          </span>
           {this.getSelectedOptionIcon(mode, type, value)}
         </div>
         <div
@@ -144,10 +208,13 @@ class ControlPanel extends Component {
           <div style={{ marginBottom: '5px' }}>
             {CONTROLS.map(({ Icon, uiLabel, mode: modeName }, index) => (
               <div
+                onClick={() => this.handleModeClick(modeName)}
                 title={uiLabel}
                 className={clsx(styles.controlIconWrapper, {
                   [styles.firstChild]: index === 0,
-                  [styles.selected]: mode === modeName
+                  [styles.selected]: selectedMode
+                    ? selectedMode === modeName
+                    : mode === modeName
                 })}
               >
                 {<Icon className={clsx(styles.controlIcon)} />}
@@ -161,6 +228,9 @@ class ControlPanel extends Component {
                   className={clsx(styles.optionWrapper, {
                     [styles.firstChild]: index === 0
                   })}
+                  onClick={() =>
+                    this.handleControlChange(optionType, optionValue)
+                  }
                 >
                   {Icon}
                 </div>
