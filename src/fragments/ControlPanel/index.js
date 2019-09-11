@@ -208,10 +208,11 @@ class ControlPanel extends Component {
           <div style={{ marginBottom: '5px' }}>
             {CONTROLS.map(({ Icon, uiLabel, mode: modeName }, index) => (
               <div
+                key={modeName}
                 onClick={() => this.handleModeClick(modeName)}
                 title={uiLabel}
                 className={clsx(styles.controlIconWrapper, {
-                  [styles.firstChild]: index === 0,
+                  [styles.childOne]: index === 0,
                   [styles.selected]: selectedMode
                     ? selectedMode === modeName
                     : mode === modeName
@@ -225,8 +226,9 @@ class ControlPanel extends Component {
             {options.map(
               ({ type: optionType, value: optionValue, Icon }, index) => (
                 <div
+                  key={`${mode}-${optionType}-${optionValue}`}
                   className={clsx(styles.optionWrapper, {
-                    [styles.firstChild]: index === 0
+                    [styles.childOne]: index === 0
                   })}
                   onClick={() =>
                     this.handleControlChange(optionType, optionValue)
