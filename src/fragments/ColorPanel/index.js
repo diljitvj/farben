@@ -16,11 +16,14 @@ const COLORS = [
   '#95a5a6'
 ];
 
-const ColorPanel = ({ onChange }) => (
+const ColorPanel = ({ onChange, color = COLORS[0] }) => (
   <div className={styles.wrapper}>
-    {COLORS.map(color => (
-      <ColorTile size={40} color={color} onClick={onChange} />
-    ))}
+    <div className={styles.activeColor} style={{ background: color }}></div>
+    <div className={styles.tilesWrapper}>
+      {COLORS.map(color => (
+        <ColorTile size={34} color={color} onClick={onChange} />
+      ))}
+    </div>
   </div>
 );
 

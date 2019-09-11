@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { State, Store } from '@sambego/storybook-state';
+
 import ControlPanel from '.';
 import '../../styles/common.css';
-import { State, Store } from '@sambego/storybook-state';
 
 const store = new Store({
   control: {

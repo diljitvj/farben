@@ -60,6 +60,23 @@ const CONTROLS = [
             }}
           ></span>
         )
+      },
+      {
+        type: 'storkeWidth',
+        value: 4,
+        Icon: (
+          <span
+            style={{
+              position: 'absolute',
+              top: 'calc(50% - 2px)',
+              width: 'calc(100% - 10px)',
+              left: '5px',
+              height: '4px',
+              background: 'black',
+              display: 'inline-block'
+            }}
+          ></span>
+        )
       }
     ]
   },
@@ -205,7 +222,7 @@ class ControlPanel extends Component {
             lineHeight: 0
           }}
         >
-          <div style={{ marginBottom: '5px' }}>
+          <div style={{ marginBottom: '6px' }}>
             {CONTROLS.map(({ Icon, uiLabel, mode: modeName }, index) => (
               <div
                 key={modeName}

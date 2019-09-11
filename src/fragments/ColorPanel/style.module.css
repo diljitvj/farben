@@ -1,5 +1,16 @@
 .wrapper {
-  width: 202px;
-  border: 1px solid var(--bordercolor);
   line-height: 0;
+}
+.activeColor {
+  height: 70px;
+  width: 70px;
+  border: 1px solid var(--bordercolor);
+  display: inline-block;
+  margin-right: 5px;
+}
+.tilesWrapper {
+  border: 1px solid var(--bordercolor);
+  width: 172px;
+  vertical-align: top;
+  display: inline-block;
 }
