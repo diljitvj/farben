@@ -4,9 +4,9 @@
 
 .controlIconWrapper {
   display: inline-block;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-top: 1px solid var(--bordercolor);
+  border-bottom: 1px solid var(--bordercolor);
+  border-right: 1px solid var(--bordercolor);
   line-height: 0;
   cursor: pointer;
   box-sizing: border-box;
@@ -21,7 +21,7 @@
 }
 .controlIconWrapper.childOne,
 .optionWrapper.childOne {
-  border-left: 1px solid #cccccc;
+  border-left: 1px solid var(--bordercolor);
 }
 
 .optionWrapper {
@@ -30,9 +30,9 @@
   height: 32px;
   display: inline-block;
   padding: 5px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-top: 1px solid var(--bordercolor);
+  border-bottom: 1px solid var(--bordercolor);
+  border-right: 1px solid var(--bordercolor);
 }
 .activeControl {
   width: 69px;
