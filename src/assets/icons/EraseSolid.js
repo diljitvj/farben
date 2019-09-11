@@ -3,7 +3,7 @@ import React from 'react';
 const EraseSolid = ({ style, className, width, height }) => (
   <svg
     id="Capa_1"
-    enable-background="new 0 0 467.765 467.765"
+    enableBackground="new 0 0 467.765 467.765"
     style={style}
     className={className}
     viewBox="0 0 467.765 467.765"
