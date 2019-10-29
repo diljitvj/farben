@@ -10,12 +10,17 @@ const Canvas = ({ color, control }) => {
   const [context, setContext] = useState(null);
 
   const handleMouseDown = event => {
-    console.log(event.clientX);
-    console.log(event.clientY);
+    setStartPoint({
+      x: event.clientX,
+      y: event.clientY
+    });
   };
+
   const handleMouseUp = event => {
-    console.log(event.clientX);
-    console.log(event.clientY);
+    setEndPoint({
+      x: event.clientX,
+      y: event.clientY
+    });
 
     drawFigure();
   };
