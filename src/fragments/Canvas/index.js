@@ -26,7 +26,7 @@ const Canvas = ({ color, control }) => {
   };
 
   const drawFigure = (startPoint, endPoint) => {
-    // console.log(canvasRef.current.getContext('2d'));
+    console.log(canvasRef.current.getContext('2d'));
   };
 
   return (
