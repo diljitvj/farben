@@ -5,28 +5,55 @@ import clsx from 'clsx';
 const Canvas = ({ color, control }) => {
   const { mode } = control;
   const canvasRef = useRef(null);
+  const [figures, setFigures] = useState([]);
   const [startPoint, setStartPoint] = useState(null);
-  const [endPoint, setEndPoint] = useState(null);
-  const [context, setContext] = useState(null);
+
+  const drawFigures = () => {
+    const ctx = canvasRef.current.getContext('2d');
+    ctx.clearRect(0, 0, 500, 500);
+
+    figures.forEach(figure => {
+      ctx.strokeStyle = 'red';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(figure.startPoint.x, figure.startPoint.y);
+      ctx.lineTo(figure.endPoint.x, figure.endPoint.y);
+      ctx.stroke();
+      ctx.fill();
+    });
+  };
+
+  useEffect(drawFigures, figures);
 
   const handleMouseDown = event => {
     setStartPoint({
-      x: event.clientX,
-      y: event.clientY
+      x: event.clientX - 7.5,
+      y: event.clientY - 7.5
     });
   };
 
   const handleMouseUp = event => {
-    setEndPoint({
-      x: event.clientX,
-      y: event.clientY
+    const figures = [...figures];
+    figures.splice(figures.length - 1, 1, {
+      startPoint,
+      endPoint: {
+        x: event.clientX,
+        y: event.clientY
+      }
     });
-
-    drawFigure();
+    setFigures(figures);
+    setStartPoint(null);
   };
 
-  const drawFigure = (startPoint, endPoint) => {
-    console.log(canvasRef.current.getContext('2d'));
+  const handleMouseMove = event => {
+    if (startPoint) {
+      const figures = [...figures];
+      figures.push({
+        startPoint,
+        endPoint: { x: event.clientX, y: event.clearRect }
+      });
+      setFigures(figures);
+    }
   };
 
   return (
@@ -34,10 +61,11 @@ const Canvas = ({ color, control }) => {
       <canvas
         ref={canvasRef}
         onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         className={clsx(styles.canvas, styles[mode])}
-        width="100"
-        height="100"
+        width="500"
+        height="500"
       ></canvas>
     </div>
   );
