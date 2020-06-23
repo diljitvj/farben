@@ -9,6 +9,10 @@ Made with React
 
 In the project directory, you can run:
 
+### `npm run storybook`
+
+Start storybook client server.<br>
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
